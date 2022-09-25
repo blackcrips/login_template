@@ -6,24 +6,21 @@ class  Controller extends Model
     public function checkCredentials()
     {
         if(!isset($_POST['username'])){
-            // header("LOCATION: ../index.php");
-            // $this->loginDocumentation();
-            echo "<pre>";
-            var_dump($_SERVER);
-            // exit();
+            header("LOCATION: ../index.php");
+            exit();
         }
 
-        // $username = htmlspecialchars($_POST['username']);
-        // $password = htmlspecialchars($_POST['password']);
+        $username = htmlspecialchars($_POST['username']);
+        $password = htmlspecialchars($_POST['password']);
 
-        // if(!$this->validLogin($username,$password)){
-        //     echo "<script>alert('Invalid username or password')</script>";
-        //     echo "<script>window.location.href = '../index.php'</script>";
-        //     exit();
-        // } else {
-        //     header("LOCATION: ../homePage.php");
-        //     exit();
-        // }
+        if(!$this->validLogin($username,$password)){
+            echo "<script>alert('Invalid username or password')</script>";
+            echo "<script>window.location.href = '../index.php'</script>";
+            exit();
+        } else {
+            header("LOCATION: ../homePage.php");
+            exit();
+        }
     }
 
     private function loginDocumentation()

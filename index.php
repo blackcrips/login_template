@@ -45,7 +45,7 @@
 
     
     <div class="right-content">
-      <img src="./images/robot-background.png" alt="robot">
+      <img src="./images/dancing-robot.gif" alt="robot">
     </div>
     
   </div>

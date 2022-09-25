@@ -8,13 +8,18 @@ class Model extends Dbh
         $sql = "SELECT * FROM user_accounts WHERE username = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$username]);
+        $rowCount = $stmt->rowCount();
 
         $results = $stmt->fetch();
 
-        if(!password_verify($password,$results['password'])){
+        if($rowCount == 0){
             return false;
         } else {
-            return true;
+            if(!password_verify($password,$results['password'])){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 }
