@@ -1,3 +1,10 @@
+<?php
+include_once('./includes/autoLoadClassesMain.inc.php');
+$controller = new Controller();
+
+$controller->redirectUser();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

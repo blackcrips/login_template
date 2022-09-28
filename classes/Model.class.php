@@ -23,11 +23,20 @@ class Model extends Dbh
         }
     }
 
-    protected function insertLoginAction($credentials)
+    protected function insertLoginAction($device,$ipAddress,$location)
     {
-        $sql = "INSERT INTO user_action (`device`,`ip_address`) VALUES (?,?)";
+        $sql = "INSERT INTO user_action (`device`,`ip_address`,`location`) VALUES (?,?,?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$credentials[0],$credentials[1]]);
+        $stmt->execute([$device,$ipAddress,$location]);
         return;
+    }
+
+    protected function getPrivilege($email)
+    {
+        $sql = "SELECT privilege FROM user_accounts WHERE username = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$email]);
+        $result = $stmt->fetch();
+        return $result;
     }
 }

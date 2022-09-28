@@ -1,3 +1,11 @@
+<?php
+
+include_once('./includes/autoLoadClassesMain.inc.php');
+$controller = new Controller();
+$controller->redirectForeignUser();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +16,9 @@
 </head>
 <body>
     <h1>Welcome</h1>
+    
+    <form action="./includes/logout.inc.php" method="post">
+        <button name="logout">Logout</button>
+    </form>
 </body>
 </html>
