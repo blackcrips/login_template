@@ -6,7 +6,7 @@ class Dbh
     private $host = "localhost";
     private $username = "root";
     private $password = "123456";
-    private $dbname = "timekeeping";
+    private $dbname = "login_template";
 
     protected function  connect()
     {
