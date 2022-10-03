@@ -172,6 +172,20 @@ class  Controller extends Model
         }
     }
 
+    public function forgotPassword()
+    {
+        if(!isset($_POST['valid-email'])){
+            header("LOCATION: ../");
+            exit();
+        }
+
+        $email = htmlspecialchars($_POST['valid-email']);
+
+        $randomNumber = mt_rand(100000,999999);
+        $msg = "Your OTP is: " . $randomNumber;
+        mail('jimmyconsulta@yahoo.com','TIMEKEEPING RETRIEVE PASSWORD OTP', $msg);
+    }
+
     public function logout()
     {
         if(!isset($_POST['logout'])){
