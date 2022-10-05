@@ -194,6 +194,10 @@ class  Controller extends Model
         exit();
     }
 
+
+
+    // Function template for SMTP while waiting for other way to send google mail
+
     private function phpMailer($validEmail)
     {
         //Load Composer's autoloader
@@ -212,13 +216,13 @@ class  Controller extends Model
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'jimmysendmail2022@gmail.com';                     //SMTP username
+            $mail->Username   = 'jimmymailer2022@yahoo.com';                     //SMTP username
             $mail->Password   = 'PHPMailer2022';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $mail->Port       = 587;  //465                             //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('jimmysendmail2022@gmail.com', 'Mailer');
+            $mail->setFrom('jimmymailer2022@yahoo.com', 'Mailer');
             $mail->addAddress('jimmyconsulta@yahoo.com', 'Joe User');     //Add a recipient
             $mail->addAddress('ellen@example.com');               //Name is optional
             $mail->addReplyTo('info@example.com', 'Information');
@@ -251,6 +255,7 @@ class  Controller extends Model
 
         $validEmail = htmlspecialchars($_POST['valid-email']);
 
-        $this->phpMailer($validEmail);
+        // $this->phpMailer($validEmail);
+        header("LOCATION: ../SMTPTempMessage.php");
     }
 }
