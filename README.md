@@ -1,6 +1,12 @@
 <html>
+
+<style>
+h1 {
+  color: red;
+}
+</style>
 <body>
-  <h1 color='red'> Login Template </h1>
+  <h1> Login Template </h1>
 
 </body>
 
